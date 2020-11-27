@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .addbox{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 700px;
+            height: 350px;
+            margin-top: -150px;
+            margin-left: -350px;
+            border-radius: 2px;
+            box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+            background: #97c1eb;
+        }
+    </style>
+    <title>Add tweet User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="addbox">
+        <center>
+            <h1>Do you want to add this user to your DB?</h1>
+            <form method="POST" action="/{{username}}/add">
+                <div class="button">
+                    <button type="submit" class="btn btn-primary">add {{username}} to DataBase</button>
+                </div>
+                <div class="button">
+                    <button type="submit" class="btn btn-secondary">
+                        <a href="/">
+                            Go back to index
+                        </a>
+                    </button>
+                </div>
+            </form>
+        </center>
+	</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

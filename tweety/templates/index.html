@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <style>
+            .frame {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 700px;
+            height: 300px;
+            margin-top: -150px;
+            margin-left: -350px;
+            border-radius: 2px;
+            box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+            background: #97c1eb;
+            }
+            .button:focus
+            {
+                font-size: 13px;
+                color:white;
+            }
+            .bottom {
+                position:  absolute;
+                top: 75%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .nametag{
+                height: 1.8em;
+                width: 220px;
+                padding: 0 10px;
+                box-shadow: 3px 3px 10px black;
+                outline: none;
+                border: none;
+                color: white;
+            }
+            input {
+                height: 1.8em;
+                width: 220px;
+                padding: 0 10px;
+                box-shadow: 3px 3px 10px #566270;
+                outline: none;
+                border: none;
+                color: #4F86C6;
+            }
+            ::placeholder {
+                color: #84B1ED;
+            }
+            .text {
+                font-weight: bold;
+            }
+            
+            button {
+                position: relative;
+                color: rgb(255, 255, 255);
+                margin-left: .5em;
+            }
+            div#search_bar {
+                position: absolute;
+                top: 70%;
+                left: 60%;
+                /* float: left; */
+                transform: translate(-30%,-50%);
+            }
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Tweet world</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    </head>
+  
+	<body>
+        <div class="frame">
+            <center>
+                <h1>Welcome to the Tweet world!</h1>
+                <br/>
+                <div class="search_bar" >
+                    <form method="POST" action="/">
+                        {% if username== None%}
+                        <input id="username" name="username" type="text" placeholder="No name inserted.." />            
+                        {% else %}
+                        <input id="username" name="username" type="text" placeholder={{username}} value={{username}}>
+                        </input>
+                        {% endif %}
+                        <button type="submit" class="btn btn-secondary"> insert </button>
+                    </form>
+                </div>
+                <br/><br/>
+                <div class="container">
+                    <button type="button" class="btn btn-secondary">
+                        <a href="/users">
+                            Users
+                        </a>
+                    </button>        
+                    <button type="button" class="btn btn-secondary">
+                        <a href="/{{username}}/add">
+                            Add User
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-warning">
+                        <a href="/{{username}}/get">
+                            Find Tweets
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-sucess">
+                        <a href="/update">
+                            Update User
+                        </a>
+                    </button>
+                    <button type="button" class="btn btn-dark">
+                        <a href="/{{username}}/delete">
+                            delete User
+                        </a>
+                        </button>
+                    <button type="button" class="btn btn-dark">
+                        <a href="/compare">
+                            Compare User
+                        </a>
+                    </button>
+                </div>
+            </center>
+        </div>
+          
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	</body>
+</html>

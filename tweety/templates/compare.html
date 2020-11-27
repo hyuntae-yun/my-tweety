@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <style>
+            .frame {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 700px;
+            height: 350px;
+            margin-top: -150px;
+            margin-left: -350px;
+            border-radius: 2px;
+            box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+            background: #97c1eb;
+            }
+            .button {
+                position: relative;
+                color: white;
+                margin-left: .5em;
+            }
+            .button:focus
+            {
+                font-size: 13px;
+                color:white;
+            }
+            select{
+                height: 1.8em;
+                width: 220px;
+                padding: 0 10px;
+                box-shadow: 3px 3px 10px black;
+                outline: none;
+                border: none;
+                color: #4F86C6;
+            }
+            .container{
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                width: 400px;
+                height: 100px;
+                margin-top: -50px;
+                margin-left: -250px;
+                border-radius: 2px;
+                box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);             
+            }
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Tweet world</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    </head>
+  
+	<body>
+        <div class="frame">
+            <center>
+                <br/>
+                <h1>Compare Users</h1>
+                <br/>
+                <form method="POST" action="/compare"  >
+                    <select name="user_id1">
+                        {% for row in data %}
+                            {% if loop.index == 1 %}
+                                <option value={{loop.index}} selected="selected" > {{row.username}} </option>
+                            {% else %}
+                                <option value={{loop.index}} selected="selected" > {{row.username}} </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <select name="user_id2">
+                        {% for row in data %}
+                            {% if loop.index == 1 %}
+                                <option value={{loop.index}} selected="selected" > {{row.username}} </option>
+                            {% else %}
+                                <option value={{loop.index}} selected="selected" > {{row.username}} </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    {% if words == None %}
+                    <input id="word" name="word" type="text" placeholder="No words inserted..." />            
+                    {% else %}
+                    <input id="word" name="word" type="text" placeholder={{username2}}>
+                    </input>
+                    {% endif %}
+                    <br/>
+                    <button type="submit " class="btn btn-outline-primary" color="white">
+                        compare
+                    </button>
+                    <form method="GET" action="/compare">                        
+                        <button type="submit" class="btn btn-outline-primary" color="white">
+                            <a href="/">
+                                되돌아가기
+                            </a>
+                        </button>
+                    </form>
+                </form>
+                <br/>
+                <br/>
+                {% if words  != None %}
+                    <h1>{{pred_result}}</h1> 
+                {% else %}
+                    <h1>What do you want to compare? </h1>
+                {% endif %}
+                <br/>
+            </center>
+        </div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	</body>
+</html>
